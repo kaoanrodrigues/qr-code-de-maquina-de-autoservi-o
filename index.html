@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="https://cdn.awsli.com.br/1970/1970954/favicon/41c0736510.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Proteico Suplementos | Vending Machine</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@500;700&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="app" class="min-h-screen pb-20">
+    <!-- App Header -->
+    <header
+      class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100 px-4 py-3 flex justify-center items-center">
+      <img src="https://cdn.awsli.com.br/1970/1970954/logo/eba0e380b5.png" alt="Proteico Suplementos"
+        class="h-10 object-contain">
+    </header>
+
+    <main class="px-4 py-6 max-w-md mx-auto">
+      <!-- Hero Section -->
+      <section class="text-center mb-8 animate-fade-in-up">
+        <h1 class="text-[1.65rem] mb-2 font-extrabold text-gray-800 leading-tight tracking-tight">Sua Escolha <span
+            class="text-brand-primary">Saudável</span> a um Toque</h1>
+        <p class="text-sm text-gray-500 mb-4 px-1 leading-relaxed">Navegue na nossa vitrine digital, confira os produtos
+          da máquina e dê um up nutritivo no seu dia!</p>
+      </section>
+
+      <!-- Categories Filter -->
+      <section class="mb-6">
+        <div id="categories-container" class="flex overflow-x-auto gap-3 pb-2 hide-scrollbar snap-x">
+          <!-- Categories will be injected here -->
+        </div>
+        <div id="subcategories-container" class="flex overflow-x-auto gap-2 mt-3 pb-2 hide-scrollbar snap-x hidden">
+          <!-- Subcategories will be injected here -->
+        </div>
+      </section>
+
+      <!-- Products Grid -->
+      <section>
+        <div id="products-grid" class="grid grid-cols-2 gap-4">
+          <!-- Product Cards will be injected here -->
+        </div>
+        <div id="empty-state" class="hidden text-center py-10 bg-gray-50 rounded-xl border border-gray-100">
+          <p class="text-gray-500">Nenhum produto encontrado nesta categoria.</p>
+        </div>
+      </section>
+
+      <!-- Product Suggestion Form -->
+      <section class="mt-12 bg-white rounded-2xl p-6 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] border border-gray-100">
+        <div class="text-center mb-5">
+          <h2 class="text-lg font-bold text-gray-800">Faltou algum produto?</h2>
+          <p class="text-xs text-brand-text mt-1">Deixe sua sugestão e nós providenciaremos!</p>
+        </div>
+        <form id="suggestion-form" class="space-y-4">
+          <div>
+            <label for="name" class="block text-xs font-semibold text-gray-700 mb-1">Seu Nome</label>
+            <input type="text" id="name" required
+              class="w-full bg-brand-light border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent transition">
+          </div>
+          <div>
+            <label for="suggestion" class="block text-xs font-semibold text-gray-700 mb-1">Qual produto você gostaria de
+              ver?</label>
+            <textarea id="suggestion" rows="3" required
+              class="w-full bg-brand-light border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-primary focus:border-transparent transition"></textarea>
+          </div>
+          <button type="submit"
+            class="w-full bg-brand-primary text-white font-bold py-3 rounded-xl shadow-lg shadow-brand-primary/30 hover:bg-green-600 transition uppercase text-sm tracking-wider">
+            Enviar Sugestão
+          </button>
+          <div id="form-feedback" class="hidden text-center text-sm font-semibold mt-2"></div>
+        </form>
+      </section>
+    </main>
+
+    <!-- Bottom Sheet Modal overlay -->
+    <div id="product-modal" class="fixed inset-0 z-[100] flex flex-col justify-end pointer-events-none">
+      <div id="modal-backdrop"
+        class="absolute inset-0 bg-black/40 opacity-0 transition-opacity duration-300 pointer-events-none"></div>
+      <div id="modal-content"
+        class="bg-white w-full max-w-md mx-auto rounded-t-3xl shadow-2xl transform translate-y-full transition-transform duration-300 pointer-events-auto relative flex flex-col max-h-[90vh]">
+        <div class="w-12 h-1.5 bg-gray-300 rounded-full mx-auto mt-4 mb-2"></div>
+        <button id="close-modal"
+          class="absolute top-4 right-4 w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center text-gray-600 hover:bg-gray-200">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18" />
+            <path d="m6 6 12 12" />
+          </svg>
+        </button>
+
+        <div class="overflow-y-auto px-6 pb-8 pt-2 flex-1">
+          <div class="aspect-square w-full rounded-2xl bg-gray-50 flex items-center justify-center p-6 mb-6">
+            <img id="modal-image" src="" alt="" class="w-full h-full object-contain drop-shadow-md">
+          </div>
+          <div class="flex justify-between items-start mb-2">
+            <h3 id="modal-title" class="text-xl font-bold font-heading text-gray-800 max-w-[80%] leading-tight"></h3>
+            <span id="modal-price" class="text-lg font-bold text-brand-primary bg-green-50 px-2 py-1 rounded-md"></span>
+          </div>
+          <p id="modal-category" class="text-xs font-semibold text-brand-secondary uppercase tracking-wider mb-4"></p>
+
+          <div class="space-y-4">
+
+            <!-- Subcategoria (exibida quando disponível) -->
+            <div id="modal-subcategory-section" class="hidden">
+              <span id="modal-subcategory" class="inline-block text-xs font-semibold bg-gray-100 text-gray-600 px-3 py-1 rounded-full"></span>
+            </div>
+
+            <div>
+              <h4 class="text-sm font-bold text-gray-800 mb-1">Descrição</h4>
+              <p id="modal-desc" class="text-sm text-gray-600 leading-relaxed"></p>
+            </div>
+
+            <!-- Molas Disponíveis -->
+            <div id="modal-slots-section">
+              <h4 class="text-sm font-bold text-gray-800 mb-2">Molas Disponíveis</h4>
+              <div id="modal-slots" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <!-- Ingredientes -->
+            <div id="modal-ingredients-section">
+              <h4 class="text-sm font-bold text-gray-800 mb-2">Ingredientes</h4>
+              <p id="modal-ingredients" class="text-xs text-gray-500 leading-relaxed bg-gray-50 rounded-xl p-3 border border-gray-100"></p>
+            </div>
+
+            <!-- Dica -->
+            <div class="bg-brand-light p-4 rounded-xl border border-gray-100">
+              <div class="flex items-center gap-2 mb-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="text-brand-primary">
+                  <circle cx="12" cy="12" r="10" />
+                  <path d="M12 8v4" />
+                  <path d="M12 16h.01" />
+                </svg>
+                <span class="text-xs font-bold text-gray-700">Dica Vending Machine</span>
+              </div>
+              <p class="text-xs text-gray-500">Alergênicos e tabela nutricional completa disponíveis na embalagem do
+                produto.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="px-6 py-4 border-t border-gray-100 bg-white">
+          <button id="buy-action"
+            class="w-full bg-brand-primary text-white font-bold py-3.5 rounded-xl hover:bg-green-600 transition uppercase text-sm tracking-wider flex items-center justify-center">
+            Disponível na Máquina
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/main.js"></script>
+</body>
+
+</html>
