@@ -14,7 +14,7 @@
 </head>
 
 <body>
-  <div id="app" class="min-h-screen pb-20">
+  <div id="app" class="min-h-screen pb-24">
     <!-- App Header -->
     <header
       class="sticky top-0 z-50 bg-white/80 backdrop-blur-md shadow-sm border-b border-gray-100 px-4 py-3 flex justify-center items-center">
@@ -77,6 +77,30 @@
         </form>
       </section>
     </main>
+
+    <!-- Promotions Page (hidden by default) -->
+    <div id="promo-page" class="hidden px-4 py-6 max-w-md mx-auto">
+      <!-- Header banner -->
+      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-green-500 to-emerald-700 p-6 mb-6 shadow-lg">
+        <div class="absolute -top-6 -right-6 w-32 h-32 bg-white/10 rounded-full"></div>
+        <div class="absolute -bottom-8 -left-8 w-40 h-40 bg-white/10 rounded-full"></div>
+        <p class="text-white/80 text-xs font-semibold uppercase tracking-widest mb-1">Ofertas Especiais</p>
+        <h2 class="text-white text-2xl font-extrabold leading-tight mb-3">Promoções<br>da Semana 🔥</h2>
+        <p class="text-white/75 text-xs leading-relaxed">Aproveite os melhores preços diretamente na máquina!</p>
+      </div>
+
+      <!-- Promo cards -->
+      <div id="promo-list" class="space-y-4">
+        <!-- injected by JS -->
+      </div>
+
+      <!-- Empty state -->
+      <div id="promo-empty" class="hidden text-center py-16">
+        <p class="text-5xl mb-4">🏷️</p>
+        <p class="text-gray-500 font-semibold">Nenhuma promoção ativa no momento.</p>
+        <p class="text-gray-400 text-sm mt-1">Volte em breve!</p>
+      </div>
+    </div>
 
     <!-- Bottom Sheet Modal overlay -->
     <div id="product-modal" class="fixed inset-0 z-[100] flex flex-col justify-end pointer-events-none">
@@ -155,6 +179,28 @@
       </div>
     </div>
   </div>
+
+  <!-- Bottom Navigation -->
+  <nav class="fixed bottom-0 left-0 right-0 z-50 bg-white border-t border-gray-100 shadow-[0_-4px_20px_-4px_rgba(0,0,0,0.08)]">
+    <div class="max-w-md mx-auto flex">
+      <button id="tab-vitrine" onclick="switchTab('vitrine')" class="flex-1 flex flex-col items-center justify-center py-3 gap-1 tab-btn tab-active">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span class="text-[10px] font-bold">Vitrine</span>
+      </button>
+      <button id="tab-promocoes" onclick="switchTab('promocoes')" class="flex-1 flex flex-col items-center justify-center py-3 gap-1 tab-btn relative">
+        <span id="promo-badge" class="hidden absolute top-2 right-8 w-2 h-2 bg-red-500 rounded-full"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/>
+          <line x1="7" y1="7" x2="7.01" y2="7"/>
+        </svg>
+        <span class="text-[10px] font-bold">Promoções</span>
+      </button>
+    </div>
+  </nav>
+
   <script type="module" src="/main.js"></script>
 </body>
 
