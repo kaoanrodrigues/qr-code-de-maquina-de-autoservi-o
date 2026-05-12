@@ -50,7 +50,7 @@ const mockProducts = [
     ingredients: 'Concentrado proteico de soro de leite (whey protein), farinha de milho, amido modificado, sal, óleo de girassol, tempero natural, vitaminas e minerais.'
   },
   {
-    id: 5, name: 'Alfajor Dr Peanut', categoryId: 'snacks-proteicos', price: 'Exibido na Máquina',
+    id: 20, name: 'Alfajor Dr Peanut', categoryId: 'snacks-proteicos', price: 'Exibido na Máquina',
     image: getImageUrl('fotos maquina/alfajor dr peanut.jfif'),
     description: 'Alfajor rico em proteínas e com aquele sabor inconfundível de amendoim.',
     slots: [{ slot: '35', flavor: 'Chocolate' }],
