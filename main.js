@@ -60,7 +60,7 @@ const mockProducts = [
     id: 4, name: 'Wafer Dr Peanut', categoryId: 'snacks-proteicos', price: 'Exibido na Máquina',
     image: getImageUrl('fotos maquina/wafer dr peanut.jfif'),
     description: 'O inconfundível sabor da pasta de amendoim D. Peanut em um wafer hiper crocante e proteico.',
-    slots: [{ slot: '25' }],
+    slots: [{ slot: '26' }],
     ingredients: 'Pasta de amendoim (amendoim torrado, sal), farinha de trigo, cacau em pó, concentrado proteico de soro de leite, óleo de palma, açúcar, lecitina de soja, aromatizante natural.'
   },
 
@@ -96,11 +96,11 @@ const mockProducts = [
     ingredients: 'Isolado proteico de soro de leite (whey protein isolate), xarope de frutose, cobertura de chocolate (cacau, açúcar, manteiga de cacau, lecitina de soja), glicerina, sal, aromatizante.'
   },
   {
-    id: 10, name: 'Bold Thin 40g', categoryId: 'barrinhas-proteicas', subcategoryId: 'lanche-rapido', price: 'Exibido na Máquina',
-    image: getImageUrl('fotos maquina/bold thin.jfif'),
-    description: 'Sabor surreal em uma barra fininha e super deliciosa. Ideal com um cafezinho.',
-    slots: [{ slot: '26', flavor: 'Avelã Branco' }],
-    ingredients: 'Concentrado proteico de soro de leite, cobertura sabor chocolate (açúcar, gordura vegetal, cacau, emulsificante lecitina de soja, aromatizante), glicerina, crisps de arroz, sal, adoçante sucralose.'
+    id: 10, name: 'Nutrata Charge Bar 45g', categoryId: 'barrinhas-proteicas', subcategoryId: 'lanche-rapido', price: 'Exibido na Máquina',
+    image: getImageUrl('fotos maquina/charge 2.jfif'),
+    description: 'sabor identico ao chocolate charge da nestle, porem mais saudavel e proteica!',
+    slots: [{ slot: '25', flavor: 'Charge' }],
+    ingredients: 'Recheio sabor caramelo (maltitol, polidextrose, gordura vegetal, leite em pó desnatado, cacau em pó, aromatizantes, emulsificante lecitina de soja, espessante pectina, edulcorante glicosídeos de esteviol de Stevia rebaudiana Bertoni e corante extrato de urucum, base norbixina), cobertura sabor chocolate ao leite (gordura vegetal, soro de leite em pó, cacau em pó, edulcorante maltitol, emulsificante lecitina de soja, conservante sorbato de potássio e aromatizante), amendoim torrado, colágeno hidrolisado, proteína de soro do leite concentrada, caseinato de cálcio, proteína concentrada de leite obtida de leite bovino, pasta de amendoim, gordura de palma, frutooligossacarídeos (FOS), proteína de soro do leite isolada, polidextrose, edulcorante xarope de maltitol, umectante glicerol, emulsificantes lecitina e goma acácia, aromatizantes, antiumectante fosfato tricálcico e antioxidante dl-alfa-tocoferol. Alertas para Alérgicos CONTÉM AMENDOIM E DERIVADOS DE LEITE E SOJA. PODE CONTER AMÊNDOA, AVELÃS, CASTANHA-DE-CAJU, CASTANHA-DO-BRASIL, NOZES, OVOS E PISTACHES. CONTÉM LACTOSE. NÃO CONTÉM GLÚTEN.'
   },
   {
     id: 11, name: 'Protein Crisp 40g', categoryId: 'barrinhas-proteicas', subcategoryId: 'lanche-rapido', price: 'Exibido na Máquina',
@@ -465,7 +465,7 @@ const promotions = [
     badgeColor: 'bg-yellow-400 text-yellow-900',
     highlight: 'Experimente os sabores!',
     promoDescription: 'Snack proteico delicioso disponível em dois sabores na máquina. Crocante, nutritivo e perfeito para qualquer hora do dia.',
-    slots: [{ slot: '05', flavor: 'Cookies' }, { slot: '01', flavor: 'Chocolate' }],
+    slots: [{ slot: '01', flavor: 'Chocolate' }],
   },
   {
     id: 'p3',
@@ -479,6 +479,17 @@ const promotions = [
       { slot: '32', flavor: 'Leite Ninho com Avelã' },
       { slot: '33', flavor: 'Ovomaltine' },
       { slot: '34', flavor: 'Duo Crunch' },
+    ],
+  },
+  {
+    id: 'p5',
+    productId: 10,             // charge
+    badge: 'NOVIDADE',
+    badgeColor: 'bg-purple-500 text-white',
+    highlight: 'Barrinha versão Charge da Nestle + Nutrata!',
+    promoDescription: 'A combinação perfeita de proteína e sabor. Charge Nestlé com a qualidade Nutrata que você já conhece.',
+    slots: [
+      { slot: '25', flavor: 'Charge' },
     ],
   },
   {
